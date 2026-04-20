@@ -4,7 +4,7 @@ import '../models/product.dart';
 class ProductCard extends StatelessWidget {
   final Product product;
   final VoidCallback onTap;
-  final bool isFavorite; // 🔥 nuevo
+  final bool isFavorite;
 
   const ProductCard({
     super.key,
@@ -19,51 +19,63 @@ class ProductCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: isFavorite ? Colors.blue : Colors.white, // 🔥 azul si favorito
-          borderRadius: BorderRadius.circular(20),
+          color: isFavorite ? Colors.blue : Colors.white,
+          borderRadius: BorderRadius.circular(25),
         ),
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 18),
         child: Stack(
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 110,
-                  child: Image.asset(
-                    product.image,
-                    fit: BoxFit.contain,
+
+                /// IMAGEN MÁS GRANDE Y CENTRADA
+                Expanded(
+                  child: Center(
+                    child: Image.asset(
+                      product.image,
+                      fit: BoxFit.contain,
+                      height: 150,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 10),
+
+                const SizedBox(height: 8),
+
                 Text(
                   product.category,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 12,
-                    color: isFavorite ? Colors.white70 : Colors.grey,
+                    color: isFavorite
+                        ? Colors.white70
+                        : Colors.grey,
                   ),
                 ),
-                const SizedBox(height: 4),
+
+                const SizedBox(height: 5),
+
                 Text(
                   product.name,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: isFavorite ? Colors.white : Colors.black,
+                    color:
+                        isFavorite ? Colors.white : Colors.black,
                   ),
                 ),
               ],
             ),
 
-            // ❤️ Corazón
+            /// ICONO FAVORITO
             Positioned(
               top: 0,
               left: 0,
               child: Icon(
                 Icons.favorite,
-                color: isFavorite ? Colors.white : Colors.grey,
+                color: isFavorite
+                    ? Colors.white
+                    : Colors.grey,
               ),
             ),
           ],
