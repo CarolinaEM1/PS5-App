@@ -55,7 +55,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: 0.6,
+                        childAspectRatio: 0.50,
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
                       ),
