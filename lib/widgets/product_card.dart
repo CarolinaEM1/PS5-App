@@ -30,15 +30,14 @@ class ProductCard extends StatelessWidget {
               children: [
 
                 /// IMAGEN MÁS GRANDE Y CENTRADA
-                Expanded(
-                  child: Center(
-                    child: Image.asset(
-                      product.image,
-                      fit: BoxFit.contain,
-                      height: 150,
-                    ),
-                  ),
-                ),
+                Transform.translate(
+  offset: Offset(0, product.name.contains("Playstation 5") ? -20 : 0),
+  child: Image.asset(
+    product.image,
+    fit: BoxFit.contain,
+    height: product.name.contains("Playstation 5") ? 190 : 140,
+  ),
+),
 
                 const SizedBox(height: 8),
 
@@ -49,7 +48,7 @@ class ProductCard extends StatelessWidget {
                     fontSize: 12,
                     color: isFavorite
                         ? Colors.white70
-                        : Colors.grey,
+                        : const Color(0xFF6B7280), // gris más fuerte
                   ),
                 ),
 
@@ -60,8 +59,9 @@ class ProductCard extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color:
-                        isFavorite ? Colors.white : Colors.black,
+                    color: isFavorite
+                        ? Colors.white
+                        : const Color(0xFF2F6FE4), // azul estilo PlayStation
                   ),
                 ),
               ],

@@ -18,7 +18,7 @@ class ProfileScreen extends StatelessWidget {
             // 👤 Imagen de perfil
             const CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage('assets/profile.jpg'),
+              backgroundImage: AssetImage('assets/yoo.png'),
             ),
 
             const SizedBox(height: 10),

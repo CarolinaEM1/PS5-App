@@ -77,19 +77,55 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _header() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
-          Icon(Icons.menu),
-          Text(
-            "PS5",
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+
+        // ICONO MENU CON FONDO BLANCO
+        Container(
+          width: 42,
+          height: 42,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(14),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.08),
+                blurRadius: 6,
+                offset: const Offset(0, 3),
+              ),
+            ],
           ),
-          Icon(Icons.settings),
-        ],
-      ),
-    );
-  }
+          child: const Icon(Icons.menu),
+        ),
+
+        // LOGO PS5
+        Image.asset(
+          "assets/PS5Principal.png",
+          height: 28,
+        ),
+
+        // ICONO SETTINGS CON FONDO BLANCO
+        Container(
+          width: 42,
+          height: 42,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(14),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.08),
+                blurRadius: 6,
+                offset: const Offset(0, 3),
+              ),
+            ],
+          ),
+          child: const Icon(Icons.settings),
+        ),
+      ],
+    ),
+  );
+}
 }

@@ -31,7 +31,7 @@ class DetailScreen extends StatelessWidget {
                     // IMAGEN DE DUALSENSE ARRIBA DEL CONTROL
                     Image.asset(
                       'assets/dualletras.png', // tu imagen de DUALSENSE
-                      height: 85,
+                      height: 100,
                       fit: BoxFit.contain,
                     ),
 
@@ -56,7 +56,7 @@ class DetailScreen extends StatelessWidget {
                                     const SizedBox(height: 6),
                                     Image.asset(
                                       'assets/circulo.png', // tu círculo azul
-                                      height: 65,
+                                      height: 75,
                                       fit: BoxFit.contain,
                                     ),
                                   ],
@@ -115,107 +115,94 @@ class DetailScreen extends StatelessWidget {
   }
 
   Widget _topHeader(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
-      decoration: const BoxDecoration(
-        color: Color(0xFF171C2A),
-        borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(30),
+  return Container(
+    width: double.infinity,
+    padding: const EdgeInsets.only(top: 10, bottom: 18),
+    decoration: const BoxDecoration(
+      color: Color(0xFF1B2233),
+      borderRadius: BorderRadius.only(
+        bottomLeft: Radius.circular(35),
+        bottomRight: Radius.circular(35),
+      ),
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        IconButton(
+          icon: const Icon(Icons.menu, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
         ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.08),
-              shape: BoxShape.circle,
-            ),
-            child: IconButton(
-              icon: const Icon(Icons.menu, color: Colors.white),
-              onPressed: () => Navigator.pop(context),
-            ),
-          ),
-          Image.asset(
-            'assets/ps5_logo.png', // tu logo PS5
-            height: 26,
-            fit: BoxFit.contain,
-          ),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.08),
-              shape: BoxShape.circle,
-            ),
-            child: IconButton(
-              icon: const Icon(Icons.settings, color: Colors.white),
-              onPressed: () {},
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+
+        Image.asset(
+          "assets/PS5Control.png",
+          height: 28,
+        ),
+
+        IconButton(
+          icon: const Icon(Icons.settings, color: Colors.white),
+          onPressed: () {},
+        ),
+      ],
+    ),
+  );
+}
 
   Widget _buySection(Product product) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(18, 0, 18, 18),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [
-            Color(0xFF1F6FEA),
-            Color(0xFF4C94FF),
-          ],
-        ),
-        borderRadius: BorderRadius.circular(40),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 10,
-            offset: Offset(0, 4),
-          ),
+  return Container(
+    margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+    padding: const EdgeInsets.symmetric(horizontal: 10),
+    height: 70,
+    decoration: BoxDecoration(
+      gradient: const LinearGradient(
+        colors: [
+          Color(0xFF2F6FE4),
+          Color(0xFF5AA1FF),
         ],
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8),
+      borderRadius: BorderRadius.circular(50),
+    ),
+    child: Row(
+      children: [
+
+        /// PRECIO
+        Expanded(
+          flex: 2,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: Text(
+              "\$${product.price}",
+              style: const TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+
+        /// BOTON BUY NOW (CENTRADO EN EL MISMO OVALO)
+        Expanded(
+          flex: 2,
+          child: Container(
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(40),
+            ),
+            child: const Center(
               child: Text(
-                "\$${product.price}",
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 28,
+                "Buy Now",
+                style: TextStyle(
                   fontWeight: FontWeight.bold,
+                  color: Color(0xFF2F6FE4),
+                  fontSize: 16,
                 ),
               ),
             ),
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
-              foregroundColor: const Color(0xFF2D7BF0),
-              elevation: 0,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 34,
-                vertical: 18,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(35),
-              ),
-            ),
-            onPressed: () {},
-            child: const Text(
-              "Buy Now",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
 }
